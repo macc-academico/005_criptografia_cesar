@@ -9,7 +9,7 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./metodo-cesar-desp.component.css'],
 })
 export class MetodoCesarDespComponent implements OnDestroy {
-  ABC = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+  ABC = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789';
   alfabeto: string[] = [];
   longCad: number = 0;
   nuevoAlfabeto: string[] = [];
@@ -18,12 +18,13 @@ export class MetodoCesarDespComponent implements OnDestroy {
   mensajeAdescifrar = new FormControl('', []);
   mensajeDescifrado: string = '';
   sus: Subscription;
-  desplaz: number[] = Array.from({ length: 27 }, (v, i) => i);
+  desplaz: number[] = [];
   desplazSelec: number = 0;
 
   constructor() {
     this.alfabeto = this.ABC.split('');
     this.longCad = this.alfabeto.length;
+    this.desplaz = Array.from({ length: this.longCad }, (v, i) => i);
     this.rotarAlfabeto(this.desplazSelec);
     this.sus = this.mensajeAcifrar.valueChanges
       .pipe(debounceTime(100))
