@@ -1,0 +1,112 @@
+<div class="container-fluid mt-1">
+  <div class="card text-center">
+    <div class="card-header">
+      <strong>METODO CIFRADO CESAR CON DESPLAZAMIENTO</strong>
+    </div>
+    <div class="card-body">
+      <div class="container-fluid">
+        <div class="alert alert-primary" role="alert">
+          Alfabeto en Claro
+          <hr />
+          <ul class="list-inline">
+            <li
+              class="list-inline-item"
+              *ngFor="let alf of alfabeto; let i = index"
+            >
+              <strong> {{ alf }}</strong>
+              <footer>{{ i }}</footer>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="alert alert-dark" role="alert">
+          <div class="row">
+            <div class="col-md-4">Seleccione Desplazamiento a la derecha</div>
+            <div class="col-md-8">
+              <select
+                class="form-control form-control-sm"
+                (change)="rotarAlfabeto($event.target.value)"
+              >
+                <option disabled>Seleccione un Numero</option>
+                <option *ngFor="let desp of desplaz" value="{{ desp }}">
+                  {{ desp }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <hr />
+          <ul class="list-inline">
+            <li
+              class="list-inline-item"
+              *ngFor="let alf of nuevoAlfabeto; let i = index"
+            >
+              <strong> {{ alf }}</strong>
+              <footer>{{ i }}</footer>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h5>Encriptar</h5>
+      <div class="container-fluid">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >Texto a cifrar</span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            [formControl]="mensajeAcifrar"
+            placeholder="Introducir Texto a cifrar"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >Texto cifrado</span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Texto cifrado"
+            value="{{ mensajeCifrado }}"
+            disabled
+          />
+        </div>
+      </div>
+      <h5>Descencriptar</h5>
+      <div class="container-fluid">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >Texto a Descifrar</span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            [formControl]="mensajeAdescifrar"
+            placeholder="Introducir Texto a Descifrar"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >Texto Descifrado</span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Texto Descifrado"
+            value="{{ mensajeDescifrado }}"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
